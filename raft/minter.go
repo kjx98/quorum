@@ -363,7 +363,7 @@ func (minter *minter) mintNewBlock() {
 
 	minter.mux.Post(core.NewMinedBlockEvent{Block: block})
 
-	elapsed := time.Since(time.Unix(0, header.Time.Int64()))
+	elapsed := time.Since(time.Unix(header.Time.Int64(), 0))
 	log.Info("🔨  Mined block", "number", block.Number(), "hash", fmt.Sprintf("%x", block.Hash().Bytes()[:4]), "elapsed", elapsed)
 }
 
